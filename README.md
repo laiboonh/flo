@@ -30,7 +30,7 @@ To be honest i choose Elixir because of familiarity. Some of its advatanges are:
 Q2. How is the code designed and structured?
 - Its a typical 3 tier architecture https://vfunction.com/blog/3-tier-application/. In this case more like 2 tier because there not much of a pesentation tier. 
 - you can say `Flo.process` is the entry point and also presentation tier
-- `Flo.stream`, `Flo.generate_sql_statements` are the logic tier
+- `Flo.chunk_stream`, `Flo.generate_sql_statements` are the logic tier
 - `SqlGenerator.batch_insert` is the data tier
 
 Q3. How does the design help to make the codebase readable and maintainable for other engineers?

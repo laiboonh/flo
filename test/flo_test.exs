@@ -1,12 +1,12 @@
 defmodule FloTest do
   use ExUnit.Case
 
-  describe "stream_200" do
+  describe "chunk_stream" do
     test "success" do
       absolute_path = Path.expand("fixtures/nem12.csv", __DIR__)
 
       assert File.stream!(absolute_path, :line)
-             |> Flo.stream()
+             |> Flo.chunk_stream()
              |> Enum.to_list() ==
                [
                  [
@@ -32,7 +32,7 @@ defmodule FloTest do
       absolute_path = Path.expand("fixtures/nem12.csv", __DIR__)
 
       assert File.stream!(absolute_path, :line)
-             |> Flo.stream()
+             |> Flo.chunk_stream()
              |> Flo.generate_sql_statements()
              |> Enum.to_list() ==
                [

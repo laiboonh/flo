@@ -6,13 +6,13 @@ defmodule Flo do
   @spec process(String.t()) :: [String.t()]
   def process(absolute_path) do
     File.stream!(absolute_path, :line)
-    |> stream()
+    |> chunk_stream()
     |> generate_sql_statements()
     |> Enum.to_list()
   end
 
-  @spec stream(File.Stream.t()) :: Enumerable.t()
-  def stream(file_stream_by_line) do
+  @spec chunk_stream(File.Stream.t()) :: Enumerable.t()
+  def chunk_stream(file_stream_by_line) do
     chunk_fun = fn element, acc ->
       record = String.split(element, ",")
 
